@@ -29,11 +29,16 @@ trolley1.dat
 trolley2.dat
 trolley3.dat
 trolley4.dat
+trolley_intersection1_2.dat
 trolley_intersection2.dat
 trolley_intersection3.dat
+trolley_intersection4.dat
 trolley_intersection5.dat
+trolley_intersection6.dat
+trolley_intersection7.dat
 minecart_Jam3_4.dat
 rivers1.dat
 traintracks.xml
+heightmap.dat
 ```
 2. Using BlackTrack, navigate to the folder that you extracted the files to and open `traintracks.xml`.
