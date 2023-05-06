@@ -19,5 +19,5 @@ file(GLOB_RECURSE BLACKTRACK_SRC
 )
 
 add_executable(blacktrack ${BLACKTRACK_SRC})
-target_include_directories(blacktrack PUBLIC include include/ImGuiFileBrowser lib/glfw/include lib/glad/include)
-target_link_libraries(blacktrack PUBLIC imgui glfw glm)
+target_include_directories(blacktrack PUBLIC include include/ImGuiFileBrowser lib/glfw/include lib/glad/include lib/pugixml/src)
+target_link_libraries(blacktrack PUBLIC imgui glfw glm pugixml)

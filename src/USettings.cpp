@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-USettings::USettings() : mLastOpenedDirectory(".") {
+USettings::USettings() : mLastOpenedDirectory("") {
     LoadSettings();
 }
 
@@ -55,7 +55,7 @@ void USettings::SaveSettings() {
     std::ofstream settingsFile(SETTINGS_FILENAME);
 
     if (settingsFile.is_open()) {
-        settingsFile << "lastopendir=" << mLastOpenedDirectory.generic_u8string() << (char)std::filesystem::path::preferred_separator << std::endl;
+        settingsFile << "lastopendir=" << mLastOpenedDirectory.generic_u8string() << std::endl;
 
         settingsFile.close();
     }

@@ -110,9 +110,8 @@ namespace imgui_addons
         ImGui::CloseCurrentPopup();
     }
 
-    bool ImGuiFileBrowser::showFileDialog(const std::string& label, const DialogMode mode, const ImVec2& sz_xy, const std::string& valid_types)
+    bool ImGuiFileBrowser::showFileDialog(const std::string& label, const DialogMode mode, const ImVec2& sz_xy, const std::string& valid_types, const std::string& startingPath)
     {
-
         dialog_mode = mode;
         ImGuiIO& io = ImGui::GetIO();
         max_size.x = io.DisplaySize.x;
@@ -140,6 +139,10 @@ namespace imgui_addons
                 {
                     this->valid_types = valid_types;
                     setValidExtTypes(valid_types);
+                }
+
+                if (startingPath != "") {
+                    current_path = startingPath;
                 }
 
                 /* If current path is empty (can happen on Windows if user closes dialog while inside MyComputer.

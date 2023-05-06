@@ -7,3 +7,6 @@
 [submodule "lib/glm"]
 	path = lib/glm
 	url = git@github.com:g-truc/glm.git
+[submodule "lib/pugixml"]
+	path = lib/pugixml
+	url = git@github.com:zeux/pugixml.git

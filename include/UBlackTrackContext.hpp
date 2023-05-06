@@ -8,6 +8,8 @@
 #include <filesystem>
 #include <memory>
 
+class UTrainTracksFile;
+
 class UBlackTrackContext {
 	//std::vector<std::shared_ptr<UMaterializerUIPanel>> mPanels;
 
@@ -24,6 +26,8 @@ class UBlackTrackContext {
 	imgui_addons::ImGuiFileBrowser mFileBrowser;
 	std::shared_ptr<USettings> mSettings;
 	
+	UTrainTracksFile* mTrackConfigFile;
+
 	void SetUpDocking();
 	void RenderMenuBar();
 

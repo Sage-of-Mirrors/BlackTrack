@@ -1,4 +1,5 @@
 #include "UBlackTrackContext.hpp"
+#include "files/UTrainTracksFile.hpp"
 
 #include <glad/gl.h>
 #include <imgui.h>
@@ -7,10 +8,12 @@
 
 UBlackTrackContext::UBlackTrackContext() {
 	mSettings = std::make_shared<USettings>();
+
+	mTrackConfigFile = new UTrainTracksFile();
 }
 
 UBlackTrackContext::~UBlackTrackContext() {
-
+	delete mTrackConfigFile;
 }
 
 bool UBlackTrackContext::Update(float deltaTime) {
@@ -86,13 +89,17 @@ void UBlackTrackContext::RenderMenuBar() {
 		ImGui::OpenPopup("Save File");
 	}
 
-	if (mFileBrowser.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::SELECT, ImVec2(700, 310)))
+	if (mFileBrowser.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 500), ".xml",
+		mSettings->GetLastOpenedDirectory().parent_path().u8string() + "//"))
 	{
-		// TODO
+		mTrackConfigFile->LoadConfigs(mFileBrowser.selected_path);
+
+		mSettings->AddOpenedFile(mFileBrowser.selected_path);
+		mSettings->SetLastOpenedDirectory(mFileBrowser.selected_path);
 	}
-	if (mFileBrowser.showFileDialog("Save File", imgui_addons::ImGuiFileBrowser::DialogMode::SAVE, ImVec2(700, 310)))
+	if (mFileBrowser.showFileDialog("Save File", imgui_addons::ImGuiFileBrowser::DialogMode::SAVE, ImVec2(700, 500), ".xml"))
 	{
-		// TODO
+		mTrackConfigFile->SaveConfigs(mFileBrowser.selected_path);
 	}
 }
 
